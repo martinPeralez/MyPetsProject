@@ -27,5 +27,64 @@ namespace MyPets.Controllers
             IQueryable<Pet> allPets = _repository.GetAllPets();
             return View(allPets);
         }
+
+        public IActionResult Detail(int id)
+        {
+            Pet pet = _repository.GetPetById(id);
+            if (pet != null)
+            {
+                return View(pet);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            Pet pet = _repository.GetPetById(id);
+            if (pet != null)
+            {
+                return View(pet);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Pet pet)
+        {
+            _repository.UpdatePet(pet);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            Pet newPet = new Pet();
+            return View(newPet);
+        }
+        [HttpPost]
+        public IActionResult Create(Pet pet)
+        {
+            _repository.Create(pet);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Pet pet = _repository.GetPetById(id);
+            if (pet != null)
+            {
+                return View(pet);
+            }
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Delete(Pet pet, int id)
+        {
+            _repository.DeletePet(id);
+            return RedirectToAction("Index");
+        }
     }
 }

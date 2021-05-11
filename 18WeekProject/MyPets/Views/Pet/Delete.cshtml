@@ -1,0 +1,13 @@
+﻿@model Pet
+
+<h1> @Model.Name </h1>
+<h3> @Model.Species</h3>
+<h3> @Model.Age</h3>
+<h3> @Model.Color</h3>
+<h3> @Model.Breed</h3>
+<h3> @Model.Sex</h3>
+<h1> Are you sure? </h1>
+<form method="post">
+    <button asp-action="Delete"> Delete </button>
+    <button asp-action="Index" formmethod="get"> Cancel </button>
+</form>

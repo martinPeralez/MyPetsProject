@@ -1,0 +1,10 @@
+﻿@model Pet
+
+<h1> @Model.Name </h1>
+<h3> @Model.Species</h3>
+<h3> @Model.Age</h3>
+<h3> @Model.Color</h3>
+<h3> @Model.Breed</h3>
+<h3> @Model.Sex</h3>
+<a asp-controller="Pet" asp-action="Update" asp-route-id="@Model.Id"> Update </a>
+<a asp-controller="Pet" asp-action="Delete" asp-route-id="@Model.Id"> Delete </a>

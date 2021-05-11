@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyPets.Models.Pet
+namespace MyPets.Models
 {
     public class EfPetRepository : IPetRepository
     {
@@ -23,6 +23,47 @@ namespace MyPets.Models.Pet
         public IQueryable<Pet> GetAllPets()
         {
             return _context.Pets;
+        }
+        public Pet GetPetById(int petId)
+        {
+            return _context.Pets.Where(p => p.Id == petId).FirstOrDefault();
+        }
+
+        public Pet UpdatePet(Pet pet)
+        {
+            Pet petToUpdate = _context.Pets.SingleOrDefault(p => p.Id == pet.Id);
+            if (petToUpdate != null)
+            {
+                petToUpdate.Name = pet.Name;
+                petToUpdate.Species = pet.Species;
+                petToUpdate.Age = pet.Age;
+                petToUpdate.Color = pet.Color;
+                petToUpdate.Breed = pet.Breed;
+                petToUpdate.Sex = pet.Sex;
+                _context.SaveChanges();
+            }
+
+            return petToUpdate;
+        }
+
+        public Pet Create(Pet pet)
+        {
+            _context.Pets.Add(pet);
+            _context.SaveChanges();
+            return pet;
+        }
+
+        public bool DeletePet(int id)
+        {
+            Pet petToDelete = _context.Pets.Find(id);
+            if (petToDelete == null)
+            {
+                return false;
+            }
+
+            _context.Pets.Remove(petToDelete);
+            _context.SaveChanges();
+            return true;
         }
     }
 }

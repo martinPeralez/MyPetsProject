@@ -4,7 +4,7 @@
 
 @foreach (var p in Model)
 {
-    <h1>@p.Name</h1>
+    <h1><a asp-controller="Pet" asp-action="Detail" asp-route-id="@p.Id">@p.Name</a></h1>
     <h3>@p.Age</h3>
     <h3>@p.Color</h3>
     <h3>@p.Breed</h3>
@@ -12,3 +12,4 @@
     <h3>@p.Species</h3>
 
 }
+<a asp-controller="Pet" asp-action="Create"> Add a Pet </a>

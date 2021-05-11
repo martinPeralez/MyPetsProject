@@ -1,0 +1,34 @@
+﻿@model Pet
+
+<form method="post">
+    <table>
+        <tr>
+            <th>Name:</th>
+            <td><input asp-for="Name" /></td>
+        </tr>
+        <tr>
+            <th>Species:</th>
+            <td><input asp-for="Species" /></td>
+        </tr>
+        <tr>
+            <th>Age:</th>
+            <td><input asp-for="Age" /></td>
+        </tr>
+        <tr>
+            <th>Color:</th>
+            <td><input asp-for="Color" /></td>
+        </tr>
+        <tr>
+            <th>Breed:</th>
+            <td><input asp-for="Breed" /></td>
+        </tr>
+        <tr>
+            <th>Sex:</th>
+            <td><input asp-for="Sex" /></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input type="submit"  value="Update"/></td>
+        </tr>
+    </table>
+</form>
