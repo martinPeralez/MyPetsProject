@@ -10,6 +10,8 @@ namespace MyPets.Models
     {
         //   F i e l d s   &   P r o p e r t i e s
         public DbSet<Pet> Pets { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<History> Histories { get; set; }
 
         //   C o n s t r u c t o r s
 
@@ -18,5 +20,15 @@ namespace MyPets.Models
         }
 
         //   M e t h o d s
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //   U s e r s
+
+            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+
+        }
     }
 }

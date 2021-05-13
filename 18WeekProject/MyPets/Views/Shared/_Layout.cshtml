@@ -1,18 +1,53 @@
-﻿<!DOCTYPE html>
+﻿@inject IUserRepository _repository
+
+<!DOCTYPE html>
 
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <title> My Pets </title>
 </head>
 
 <body>
     <ul>
         <li>
-            <a asp-controller="Pet" asp-action="Index"> My Pets </a>
+            <a asp-controller="Home" asp-action="Index"> Home </a>
         </li>
     </ul>
+    @if (_repository.IsUserLoggedIn())
+    {
+        <ul>
+            <li>
+                <a asp-controller="Pet" asp-action="Index"> My Pets </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a asp-controller="User" asp-action="Update"> My Account </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a asp-controller="User" asp-action="Logout"> Logout </a>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <ul>
+            <li>
+                <a asp-controller="User" asp-action="Login"> Login </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a asp-controller="User" asp-action="Register"> Register </a>
+            </li>
+        </ul>
+    }
+
     <div>
         @RenderBody()
     </div>

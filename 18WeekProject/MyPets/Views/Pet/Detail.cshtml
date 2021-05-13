@@ -1,4 +1,5 @@
 ﻿@model Pet
+@inject IHistoryRepository historyRepository
 
 <h1> @Model.Name </h1>
 <h3> @Model.Species</h3>
@@ -8,3 +9,19 @@
 <h3> @Model.Sex</h3>
 <a asp-controller="Pet" asp-action="Update" asp-route-id="@Model.Id"> Update </a>
 <a asp-controller="Pet" asp-action="Delete" asp-route-id="@Model.Id"> Delete </a>
+<br />
+@if (historyRepository == null)
+{
+    <a asp-controller="History" asp-action="Create" asp-route-id="@Model.Id" > Add History </a>
+}
+else
+{
+    @foreach (History history in historyRepository.GetAllHistories().Where(h => h.PetId == Model.Id))
+    {
+        <div>@history.Date</div>
+        <div>@history.Summary</div>
+        <div>@history.Weight</div>
+    }
+    <a asp-controller="History" asp-action="Create" asp-route-id="@Model.Id"> Add History </a>
+}
+

@@ -1,5 +1,9 @@
 ﻿@model Pet
-<form method="post">
+@inject IUserRepository userRepository
+
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<form method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <th>Name:</th>
@@ -26,8 +30,20 @@
             <td><input asp-for="Sex" /></td>
         </tr>
         <tr>
+            <th>Photo:</th>
+            <td>
+                <div class="custom-file">
+                    <input asp-for="CoverPhoto" class="custom-file-input" id="customFile" />
+                    <label class="custom-file-label" for="customFile"> Choose File </label>
+                </div>
+                <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
             <th></th>
-            <td><input type="submit" value="Add Pet" /></td>
+            <td>
+                <input type="submit" value="Add Pet" />
+            </td>
         </tr>
     </table>
 </form>

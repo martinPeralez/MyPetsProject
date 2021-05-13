@@ -32,8 +32,24 @@ namespace MyPets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+
+            //string dbConnectionString = System.Environment.GetEnvironmentVariable("MyPetsDbConnectionString");
+            //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(dbConnectionString));
+
             services.AddScoped<IPetRepository, EfPetRepository>();
+            services.AddScoped<IUserRepository, EfUserRepository>();
+            services.AddScoped<IHistoryRepository, EfHistoryRepository>();
+            services.AddScoped<IEmailRepository, GmailEmailRepository>();
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+            services.AddMemoryCache();
+            //services.AddDistributedMemoryCache();
+            services.AddSession(
+                 //options =>
+                 //{
+                 //    options.IdleTimeout = TimeSpan.FromSeconds(10);
+                 //}
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +65,8 @@ namespace MyPets
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

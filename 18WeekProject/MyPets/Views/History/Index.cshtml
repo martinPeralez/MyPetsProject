@@ -1,0 +1,12 @@
+﻿@model IQueryable<History>
+
+<h4> Histories </h4>
+
+@foreach (var h in Model)
+{
+    <h1><a asp-controller="Pet" asp-action="Detail" asp-route-id="@h.Id"> Details </a></h1>
+    <h3>@h.Date</h3>
+    <h3>@h.Summary</h3>
+    <h3>@h.Weight</h3>
+
+}

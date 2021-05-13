@@ -1,0 +1,26 @@
+﻿@model History
+<h1> Hello World </h1>
+<form method="post">
+    <input type="hidden" asp-for="PetId" />
+    <input type="hidden" asp-for="Id"/>
+    <table>
+        <tr>
+            <th>Date:</th>
+            <td><input asp-for="Date" /></td>
+        </tr>
+        <tr>
+            <th>Summary:</th>
+            <td><input asp-for="Summary" /></td>
+        </tr>
+        <tr>
+            <th>Weight:</th>
+            <td><input asp-for="Weight" /></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <input type="submit" value="Add History" />
+            </td>
+        </tr>
+    </table>
+</form>

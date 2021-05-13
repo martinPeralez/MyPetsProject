@@ -1,0 +1,22 @@
+﻿@model UserRegistrationViewModel
+
+<h1> Register New User </h1>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post">
+    First Name:
+    <input asp-for="FirstName" required /> <br />
+    Last Name:
+    <input asp-for="LastName" required /> <br />
+    Address:
+    <input asp-for="Address" required /> <br />
+    Phone Number:
+    <input asp-for="PhoneNumber" type="tel" required /> <br />
+    UserName (E-Mail Address):
+    <input asp-for="Email" type="email" required /> <br />
+    Password:
+    <input asp-for="Password" type="password" required /> <br />
+    Verification Password:
+    <input asp-for="VerificationPassword" type="password" required /> <br />
+    <input type="submit" value="Register" />
+</form>
