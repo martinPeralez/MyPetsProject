@@ -4,6 +4,7 @@
 
 <div asp-validation-summary="All" class="text-danger"></div>
 <form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="@Model.FileUploaded" value="@DateTime.Now" />
     <table>
         <tr>
             <th>Name:</th>
@@ -11,7 +12,12 @@
         </tr>
         <tr>
             <th>Species:</th>
-            <td><input asp-for="Species" /></td>
+            <td>
+                <select name="species" asp-for="Species">
+                    <option value="Feline">Feline</option>
+                    <option value="Canine">Canine</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <th>Age:</th>
@@ -27,7 +33,23 @@
         </tr>
         <tr>
             <th>Sex:</th>
-            <td><input asp-for="Sex" /></td>
+            <td>
+
+                <input type="radio" asp-for="Sex" id="male" name="sex" value="Male"
+                       checked>
+                <label for="male">Male</label>
+
+                <input type="radio" asp-for="Sex" id="female" name="sex" value="Female">
+                <label for="dewey">Female</label>
+
+            </td>
+        </tr>
+        <tr>
+            <th>Spay/Neuter:</th>
+            <td>
+                <input type="checkbox" name="SpayNeuter" value="true" checked="@Model.SpayNeuter" />
+                <label for="SpayNeuter"> Spay / Neuter </label>
+            </td>
         </tr>
         <tr>
             <th>Photo:</th>
@@ -37,6 +59,16 @@
                     <label class="custom-file-label" for="customFile"> Choose File </label>
                 </div>
                 <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Vet Form:</th>
+            <td>
+                <div class="custom-file">
+                    <input asp-for="VetForm" class="custom-file-input" id="customFileVet" />
+                    <label class="custom-file-label" for="customFileVet"> Choose File </label>
+                </div>
+                <span asp-validation-for="VetForm" class="text-danger"></span>
             </td>
         </tr>
         <tr>

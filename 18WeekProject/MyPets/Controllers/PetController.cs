@@ -37,6 +37,13 @@ namespace MyPets.Controllers
             Pet pet = _repository.GetPetById(id);
             if (pet != null)
             {
+                string slash = "/";
+                slash += pet.CoverImageUrl;
+                pet.CoverImageUrl = slash;
+
+                string slashVet = "/";
+                slashVet += pet.VetFormUrl;
+                pet.VetFormUrl = slashVet;
                 return View(pet);
             }
             return RedirectToAction("Index");
@@ -48,6 +55,9 @@ namespace MyPets.Controllers
             Pet pet = _repository.GetPetById(id);
             if (pet != null)
             {
+                string slash = "/";
+                slash += pet.CoverImageUrl;
+                pet.CoverImageUrl = slash;
                 return View(pet);
             }
             return RedirectToAction("Index");
@@ -73,24 +83,38 @@ namespace MyPets.Controllers
             {
                 if (pet.CoverPhoto != null)
                 {
-                    string folder = "books/cover/";
+                    string folder = "images/coverimage/";
+
                     folder += Guid.NewGuid().ToString() + "_" + pet.CoverPhoto.FileName;
 
                     pet.CoverImageUrl = folder;
 
                     string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
 
-                    await pet.CoverPhoto.CopyToAsync(new FileStream(serverFolder, FileMode.Create)); 
+                    await pet.CoverPhoto.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                }
+                if (pet.VetForm != null)
+                {
+                    string folder = "forms/vet/";
 
+                    folder += Guid.NewGuid().ToString() + "_" + pet.VetForm.FileName;
+
+                    pet.VetFormUrl = folder;
+
+                    string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+
+                    await pet.VetForm.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
                 }
                 _repository.Create(pet);
+
                 return RedirectToAction("Index");
             }
-            else
-            {
-                ModelState.AddModelError("", "Something Went Wrong.");
-                return RedirectToAction("Create", pet);
-            }
+
+
+            ModelState.AddModelError("", "Something Went Wrong.");
+            return RedirectToAction("Create", pet);
+
+
         }
 
         [HttpGet]
@@ -99,6 +123,9 @@ namespace MyPets.Controllers
             Pet pet = _repository.GetPetById(id);
             if (pet != null)
             {
+                string slash = "/";
+                slash += pet.CoverImageUrl;
+                pet.CoverImageUrl = slash;
                 return View(pet);
             }
 

@@ -69,7 +69,7 @@ namespace MyPets.Controllers
             _repository.Create(history);
             Pet addPetHistory = _petRepository.GetPetById(history.PetId);
             addPetHistory.Histories.Add(history);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", "Pet", _petRepository.GetPetById(history.PetId));
         }
 
         [HttpGet]

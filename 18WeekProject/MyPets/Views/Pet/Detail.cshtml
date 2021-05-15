@@ -1,5 +1,6 @@
 ﻿@model Pet
 @inject IHistoryRepository historyRepository
+@inject IPetRepository petRepository
 
 <h1> @Model.Name </h1>
 <h3> @Model.Species</h3>
@@ -7,12 +8,29 @@
 <h3> @Model.Color</h3>
 <h3> @Model.Breed</h3>
 <h3> @Model.Sex</h3>
+
+<img src="@Model.CoverImageUrl" alt="Alternate Text" class="img-thumbnail" width="100" height="200" />
+
+<span> File Uploaded Date and Time</span>
+<a href="@Model.VetFormUrl">Vet Form</a>
+
+@if (Model.SpayNeuter)
+{
+    if (Model.Sex == "Male")
+    {
+        <h3> Neutered </h3>
+    }
+    else
+    {
+        <h3> Spayed </h3>
+    }
+}
 <a asp-controller="Pet" asp-action="Update" asp-route-id="@Model.Id"> Update </a>
 <a asp-controller="Pet" asp-action="Delete" asp-route-id="@Model.Id"> Delete </a>
 <br />
 @if (historyRepository == null)
 {
-    <a asp-controller="History" asp-action="Create" asp-route-id="@Model.Id" > Add History </a>
+    <a asp-controller="History" asp-action="Create" asp-route-id="@Model.Id"> Add History </a>
 }
 else
 {
@@ -20,8 +38,9 @@ else
     {
         <div>@history.Date</div>
         <div>@history.Summary</div>
-        <div>@history.Weight</div>
+        <div>@history.Weight</div><span><a asp-controller="History" asp-action="Delete" asp-route-id="@history.Id"> Delete History </a></span>
     }
     <a asp-controller="History" asp-action="Create" asp-route-id="@Model.Id"> Add History </a>
 }
+
 

@@ -18,12 +18,26 @@ namespace MyPets.Models
         public string Color { get; set; }
         public string Breed { get; set; }
         public string Sex { get; set; }
-        [Display(Name = "Choose the cover photo for you pet.")]
+
+        public bool SpayNeuter { get; set; }
+
+
         [NotMapped]
         public IFormFile CoverPhoto { get; set; }
         public string CoverImageUrl { get; set; }
+
+        [NotMapped]
+        public IFormFile VetForm { get; set; }
+        public string VetFormUrl { get; set; }
+
+
+        public string FileUploaded { get; set; }
+
+
         public int UserId { get; set; }
         public User Users { get; set; }
+
+
         public List<History> Histories { get; set; }
     }
 }

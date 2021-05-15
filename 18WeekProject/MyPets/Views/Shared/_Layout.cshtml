@@ -7,46 +7,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <title> My Pets </title>
+    <title> Tracking The Toe Beans </title>
 </head>
 
 <body>
-    <ul>
-        <li>
-            <a asp-controller="Home" asp-action="Index"> Home </a>
-        </li>
-    </ul>
-    @if (_repository.IsUserLoggedIn())
-    {
-        <ul>
-            <li>
-                <a asp-controller="Pet" asp-action="Index"> My Pets </a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a asp-controller="User" asp-action="Update"> My Account </a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a asp-controller="User" asp-action="Logout"> Logout </a>
-            </li>
-        </ul>
-    }
-    else
-    {
-        <ul>
-            <li>
-                <a asp-controller="User" asp-action="Login"> Login </a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a asp-controller="User" asp-action="Register"> Register </a>
-            </li>
-        </ul>
-    }
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    <img src="~/images/Logo/5765y-jb3.jpg" alt="Tracking The Toe Beans Logo" width="30" height="24" class="d-inline-block align-top" />
+                    Tracking The Toe Beans
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="nav-link" asp-controller="Home" asp-action="Index"> Home </a>
+                </li>
+
+                @if (_repository.IsUserLoggedIn())
+                {
+
+                    <li>
+                        <a class="nav-link" asp-controller="Pet" asp-action="Index"> My Pets </a>
+                    </li>
+
+
+                    <li>
+                        <a class="nav-link" asp-controller="User" asp-action="Update"> My Account </a>
+                    </li>
+
+
+                    <li>
+                        <a class="nav-link" asp-controller="User" asp-action="Logout"> Logout </a>
+                    </li>
+
+                }
+                else
+                {
+
+                    <li>
+                        <a class="nav-link" asp-controller="User" asp-action="Login"> Login </a>
+                    </li>
+
+
+                    <li>
+                        <a class="nav-link" asp-controller="User" asp-action="Register"> Register </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
 
     <div>
         @RenderBody()

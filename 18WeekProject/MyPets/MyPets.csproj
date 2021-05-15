@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\books\cover\" />
+    <Folder Include="wwwroot\forms\vet\" />
+    <Folder Include="wwwroot\images\coverimage\" />
   </ItemGroup>
 
 </Project>

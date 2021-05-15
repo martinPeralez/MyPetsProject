@@ -33,6 +33,15 @@ namespace MyPets.Models
         public Pet GetPetById(int petId)
         {
             return _context.Pets.Where(p => p.Id == petId).FirstOrDefault();
+            //return await _context.Pets.Where(p => p.Id == petId).Select(pet => new Pet()
+            //{
+            //    Gallery = pet.PetGallery.Select(g => new PetGallery()
+            //    {
+            //        Id = g.Id,
+            //        Name = g.Name,
+            //        Url = g.Url
+            //    }).ToList()
+            //}).FirstOrDefaultAsync();
         }
 
         public Pet UpdatePet(Pet pet)
@@ -59,7 +68,7 @@ namespace MyPets.Models
                 try
                 {
                     pet.UserId = _userRepository.GetLoggedInUserId();
-                    
+
                     _context.Pets.Add(pet);
                     _context.SaveChanges();
                 }
@@ -68,7 +77,7 @@ namespace MyPets.Models
                 }
                 return pet;
             }
-            
+
             return null;
         }
 

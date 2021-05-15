@@ -1,0 +1,10 @@
+﻿@model History
+
+<h1> @Model.Date </h1>
+<h3> @Model.Summary</h3>
+<h3> @Model.Weight</h3>
+<h1> Are you sure? </h1>
+<form method="post">
+    <button asp-action="Delete"> Delete </button>
+    <button asp-action="Index" formmethod="get"> Cancel </button>
+</form>

@@ -64,17 +64,26 @@ namespace MyPets.Migrations
                     b.Property<string>("CoverImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FileUploaded")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sex")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("SpayNeuter")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Species")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("VetFormUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

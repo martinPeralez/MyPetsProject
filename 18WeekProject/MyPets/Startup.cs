@@ -31,10 +31,10 @@ namespace MyPets
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
-            //string dbConnectionString = System.Environment.GetEnvironmentVariable("MyPetsDbConnectionString");
-            //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(dbConnectionString));
+            string dbConnectionString = System.Environment.GetEnvironmentVariable("MyPetsDbConnectionString");
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(dbConnectionString));
 
             services.AddScoped<IPetRepository, EfPetRepository>();
             services.AddScoped<IUserRepository, EfUserRepository>();
