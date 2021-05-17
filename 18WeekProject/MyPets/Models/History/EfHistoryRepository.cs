@@ -70,6 +70,10 @@ namespace MyPets.Models
                 historyToUpdate.Date = history.Date;
                 historyToUpdate.Summary = history.Summary;
                 historyToUpdate.Weight = history.Weight;
+                historyToUpdate.Medication = history.Medication;
+                historyToUpdate.Appointment = history.Appointment;
+                historyToUpdate.FirstMeal = history.FirstMeal;
+                historyToUpdate.SecondMeal = history.SecondMeal;
                 _context.SaveChanges();
             }
 

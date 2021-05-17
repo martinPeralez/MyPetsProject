@@ -6,61 +6,49 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="~/lib/css/styles.css" rel="stylesheet" />
     <title> Tracking The Toe Beans </title>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container">
+    <nav class="navbar navbar-">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">
-                    <img src="~/images/Logo/5765y-jb3.jpg" alt="Tracking The Toe Beans Logo" width="30" height="24" class="d-inline-block align-top" />
-                    Tracking The Toe Beans
-                </a>
+                <a class="navbar-brand" href="#">Tracking The Beans</a>
             </div>
             <ul class="nav navbar-nav">
-                <li>
-                    <a class="nav-link" asp-controller="Home" asp-action="Index"> Home </a>
-                </li>
-
                 @if (_repository.IsUserLoggedIn())
                 {
-
                     <li>
-                        <a class="nav-link" asp-controller="Pet" asp-action="Index"> My Pets </a>
+                        <a asp-controller="Home" asp-action="Index"> Home </a>
                     </li>
-
-
                     <li>
-                        <a class="nav-link" asp-controller="User" asp-action="Update"> My Account </a>
+                        <a asp-controller="Pet" asp-action="Index"> My Pets </a>
                     </li>
-
-
                     <li>
-                        <a class="nav-link" asp-controller="User" asp-action="Logout"> Logout </a>
+                        <a asp-controller="User" asp-action="Update"> My Account </a>
+                    </li>
+                    <li>
+                        <a asp-controller="User" asp-action="Logout"> Logout </a>
                     </li>
 
                 }
                 else
                 {
-
                     <li>
-                        <a class="nav-link" asp-controller="User" asp-action="Login"> Login </a>
+                        <a asp-controller="Home" asp-action="Index"> Home </a>
                     </li>
-
-
                     <li>
-                        <a class="nav-link" asp-controller="User" asp-action="Register"> Register </a>
+                        <a asp-controller="User" asp-action="Login"> Login </a>
+                    </li>
+                    <li>
+                        <a class="btn-area" asp-controller="User" asp-action="Register"> Register </a>
                     </li>
                 }
             </ul>
         </div>
     </nav>
-
-    <div>
-        @RenderBody()
-    </div>
+    @RenderBody()
 </body>
 </html>

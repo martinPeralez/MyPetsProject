@@ -55,6 +55,7 @@ namespace MyPets.Models
                 petToUpdate.Color = pet.Color;
                 petToUpdate.Breed = pet.Breed;
                 petToUpdate.Sex = pet.Sex;
+                petToUpdate.SpayNeuter = pet.SpayNeuter;
                 _context.SaveChanges();
             }
 
@@ -69,6 +70,9 @@ namespace MyPets.Models
                 {
                     pet.UserId = _userRepository.GetLoggedInUserId();
 
+                    pet.Url = new List<string>();
+                    string url = pet.CoverImageUrl;
+                    pet.Url.Add(url);
                     _context.Pets.Add(pet);
                     _context.SaveChanges();
                 }

@@ -12,7 +12,6 @@ namespace MyPets.Models
         public DbSet<Pet> Pets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<History> Histories { get; set; }
-
         //   C o n s t r u c t o r s
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

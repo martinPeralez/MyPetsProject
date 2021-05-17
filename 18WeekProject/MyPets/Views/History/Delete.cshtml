@@ -1,10 +1,38 @@
 ﻿@model History
 
-<h1> @Model.Date </h1>
-<h3> @Model.Summary</h3>
-<h3> @Model.Weight</h3>
-<h1> Are you sure? </h1>
-<form method="post">
-    <button asp-action="Delete"> Delete </button>
-    <button asp-action="Index" formmethod="get"> Cancel </button>
-</form>
+<div class="container">
+    <div>
+        <h2>Are You Sure?</h2>
+    </div>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Summary</th>
+                <th>Weight</th>
+                <th>Medication</th>
+                <th>First Meal</th>
+                <th>Second Meal</th>
+                <th>Appointment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Date</td>
+                <td>@Model.Summary</td>
+                <td>@Model.Weight</td>
+                <td>@Model.Medication</td>
+                <td>@Model.FirstMeal </td>
+                <td>@Model.SecondMeal</td>
+                <td>@Model.Appointment</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <form method="post">
+            <input type="hidden" asp-for="@Model.PetId" />
+            <button class="btn btn-class m-2" type="submit" asp-action="Delete" asp-route-id="@Model.Id"> Delete </button>
+            <a class="btn btn-class m-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"> Back </a>
+        </form>
+    </div>
+</div>

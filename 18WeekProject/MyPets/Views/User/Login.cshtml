@@ -1,13 +1,23 @@
 ﻿@model User
 
-<h1> Login </h1>
-
-<form method="post">
-    Email:
-    <input asp-for="Email" type="email" placeholder="JonDoe@Example.com" required/>
-    <br />
-    Password:
-    <input asp-for="Password" type="password" required />
-    <br />
-    <input type="submit" value="Login" />
-</form>
+<div class="container">
+    <div class="row content">
+        <div class="col-md-3 mb-3">
+            <img src="~/images/LoginPicture/images.jpg" alt="Cute Cat and Dog" />
+        </div>
+        <div class="col-md-6">
+            <h3 class="signin-text mb-3"> Login </h3>
+            <form method="post">
+                <div class="form-group">
+                    <label for="email"> Email: </label>
+                    <input asp-for="Email" name="email" type="email" placeholder="JonDoe@Example.com" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input asp-for="Password" name="password" type="password" required class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-class m-2"> Login </button>
+            </form>
+        </div>
+    </div>
+</div>

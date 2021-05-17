@@ -14,20 +14,23 @@ namespace MyPets.Controllers
 
         private readonly ILogger<HomeController> _logger;
         private IEmailRepository _emailRepo;
+        private IPetRepository _petRepository;
 
         //   C o n s t r u c t o r s
 
-        public HomeController(ILogger<HomeController> logger, IEmailRepository emailRepo)
+        public HomeController(ILogger<HomeController> logger, IEmailRepository emailRepo, IPetRepository petRepository)
         {
             _logger = logger;
             _emailRepo = emailRepo;
+            _petRepository = petRepository;
         }
 
         //   M e t h o d s
 
         public IActionResult Index()
         {
-            return View();
+            IQueryable<Pet> allPets = _petRepository.GetAllPets();
+            return View(allPets);
         }
         public IActionResult SendEmail()
         {

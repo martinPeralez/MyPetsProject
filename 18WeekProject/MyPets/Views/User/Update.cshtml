@@ -1,41 +1,81 @@
 ﻿@model User
+@*<form method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="FirstName" />
+        <input type="hidden" asp-for="LastName" />
+        <input type="hidden" asp-for="Email" />
+        <input type="hidden" asp-for="Password" />
 
-<form method="post">
-    <input type="hidden" asp-for="Id" />
-    <input type="hidden" asp-for="FirstName" />
-    <input type="hidden" asp-for="LastName" />
-    <input type="hidden" asp-for="Email" />
-    <input type="hidden" asp-for="Password" />
+        <table>
+            <tr>
+                <th>First Name:</th>
+                <td>@Model.FirstName</td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>@Model.LastName</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td><input asp-for="Address" /></td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td><input asp-for="PhoneNumber" /></td>
+            </tr>
 
-    <table>
-        <tr>
-            <th>First Name:</th>
-            <td>@Model.FirstName</td>
-        </tr>
-        <tr>
-            <th>Last Name:</th>
-            <td>@Model.LastName</td>
-        </tr>
-        <tr>
-            <th>Email:</th>
-            <td>@Model.Email</td>
-        </tr>
-        <tr>
-            <th>Address:</th>
-            <td><input asp-for="Address" /></td>
-        </tr>
-        <tr>
-            <th>Phone Number:</th>
-            <td><input asp-for="PhoneNumber" /></td>
-        </tr>
-
-        <tr>
-            <th>Password:</th>
-            <td><a asp-controller="User" asp-action="ChangePassword" asp-route-id="@Model.Id"> Change Password </a></td>
-        </tr>
-        <tr>
-            <th></th>
-            <td><input type="submit" value="Update" /></td>
-        </tr>
-    </table>
-</form>
+            <tr>
+                <th>Password:</th>
+                <td><a asp-controller="User" asp-action="ChangePassword" asp-route-id="@Model.Id"> Change Password </a></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="Update" /></td>
+            </tr>
+        </table>
+    </form>*@
+<div class="container">
+    <div class="row content">
+        <div class="col-md-3 mb-3">
+            <img src="~/images/LoginPicture/images.jpg" alt="Cute Cat and Dog" class="img-fluid img-thumbnail" />
+        </div>
+        <div class="col-md-6">
+            <h3 class="signin-text mb-3"> My Account </h3>
+            <form method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="FirstName" />
+                <input type="hidden" asp-for="LastName" />
+                <input type="hidden" asp-for="Email" />
+                <input type="hidden" asp-for="Password" />
+                @*<div class="form-group">
+                    <label for="firstname"> First Name: </label>
+                    <input asp-for="FirstName" name="firstname" type="text" placeholder="Name@Example.com" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="lastname"> Last Name: </label>
+                    <input asp-for="LastName" name="lastname" type="text" required class="form-control" />
+                </div>*@
+                <div class="form-group">
+                    <label for="address"> Address:</label>
+                    <input asp-for="Address" name="address" type="text" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Phone Number:</label>
+                    <input asp-for="PhoneNumber" name="phonenumber" type="text" required class="form-control" />
+                </div>
+                @*<div class="form-group">
+                    <label for="email">Email:</label>
+                    <input asp-for="Email" name="email" type="email" required class="form-control" />
+                </div>*@
+                <div class="form-group">
+                    <a asp-controller="User" asp-action="ChangePassword" asp-route-id="@Model.Id"> Change Password </a>
+                </div>
+                <button type="submit" class="btn btn-class m-2"> Update </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -26,11 +26,23 @@ namespace MyPets.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Appointment")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("FirstMeal")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Medication")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PetId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("SecondMeal")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");

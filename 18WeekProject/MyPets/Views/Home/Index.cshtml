@@ -1,1 +1,15 @@
-﻿<h4> Welcome to My Pets!</h4>
+﻿@model IQueryable<Pet>
+<h1 class="text-center text-primary"> My Pets </h1>
+<div class="container">
+    @if (Model != null)
+    {
+        @foreach (var image in Model)
+        {
+            <div class="image">
+                <img src="@image.CoverImageUrl" class="d-block w-100" alt="Gallery Of Your Pets" />
+            </div>
+        }
+    }
+</div>
+
+

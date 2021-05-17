@@ -13,8 +13,10 @@ namespace MyPets.Models
         public DateTime Date { get; set; }
         public string Summary { get; set; }
         public double Weight { get; set; }
-
-
+        public string Medication { get; set; }
+        public DateTime FirstMeal { get; set; }
+        public DateTime SecondMeal { get; set; }
+        public bool Appointment { get; set; }
 
         public int PetId { get; set; }
         public Pet Pet { get; set; }

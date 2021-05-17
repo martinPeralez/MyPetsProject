@@ -1,15 +1,70 @@
 ﻿@model Pet
 
+@*<img src="@Model.CoverImageUrl" />
+    <h1> @Model.Name </h1>
+    <h3> @Model.Species</h3>
+    <h3> @Model.Age</h3>
+    <h3> @Model.Color</h3>
+    <h3> @Model.Breed</h3>
+    <h3> @Model.Sex</h3>
+    <h1> Are you sure? </h1>
+    <form method="post">
+        <button asp-action="Delete"> Delete </button>
+        <button asp-action="Index" formmethod="get"> Cancel </button>
+    </form>*@
+<div class="container">
+    <div>
+        <h2>Are You Sure?</h2>
+    </div>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Age</th>
+                <th>Color</th>
+                <th>Breed</th>
+                <th>Sex</th>
+                @if (Model.Sex == "Male")
+                {
 
-<img src="@Model.CoverImageUrl" />
-<h1> @Model.Name </h1>
-<h3> @Model.Species</h3>
-<h3> @Model.Age</h3>
-<h3> @Model.Color</h3>
-<h3> @Model.Breed</h3>
-<h3> @Model.Sex</h3>
-<h1> Are you sure? </h1>
-<form method="post">
-    <button asp-action="Delete"> Delete </button>
-    <button asp-action="Index" formmethod="get"> Cancel </button>
-</form>
+                    <th>Neutered:</th>
+
+
+                }
+                else
+                {
+
+                    <th>Spayed:</th>
+
+
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Species</td>
+                <td>@Model.Age</td>
+                <td>@Model.Color</td>
+                <td>@Model.Breed </td>
+                <td>@Model.Sex</td>
+                @if (Model.SpayNeuter)
+                {
+                    <td>@Model.SpayNeuter</td>
+                }
+                else
+                {
+                    <td>@Model.SpayNeuter</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <form method="post">
+            <button class="btn btn-class m-2" type="submit" asp-action="Delete" asp-route-id="@Model.Id"> Delete </button>
+
+            <a class="btn btn-class m-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.Id"> Back </a>
+        </form>
+    </div>
+</div>

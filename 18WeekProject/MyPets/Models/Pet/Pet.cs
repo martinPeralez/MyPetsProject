@@ -39,5 +39,7 @@ namespace MyPets.Models
 
 
         public List<History> Histories { get; set; }
+        [NotMapped]
+        public List<string> Url { get; set; }
     }
 }

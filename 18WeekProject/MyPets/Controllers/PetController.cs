@@ -67,7 +67,7 @@ namespace MyPets.Controllers
         public IActionResult Update(Pet pet)
         {
             _repository.UpdatePet(pet);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", "Pet", new { id = pet.Id });
         }
 
         [HttpGet]
@@ -135,7 +135,7 @@ namespace MyPets.Controllers
         public IActionResult Delete(Pet pet, int id)
         {
             _repository.DeletePet(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", "Pet", new { id = pet.Id });
         }
     }
 }

@@ -52,7 +52,7 @@ namespace MyPets.Controllers
         public IActionResult Update(History history)
         {
             _repository.UpdateHistory(history);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", "Pet", new { id = history.PetId});
         }
 
         [HttpGet]
@@ -87,7 +87,7 @@ namespace MyPets.Controllers
         public IActionResult Delete(History history, int id)
         {
             _repository.DeleteHistory(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", "Pet", new { id = history.PetId });
         }
     }
 }

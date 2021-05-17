@@ -55,7 +55,7 @@ namespace MyPets.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-
+            ModelState.AddModelError("", "Could not register this account. Try again.");
             return View(urvm);
         }
 
