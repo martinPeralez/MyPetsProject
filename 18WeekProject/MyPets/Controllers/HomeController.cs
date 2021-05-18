@@ -15,14 +15,16 @@ namespace MyPets.Controllers
         private readonly ILogger<HomeController> _logger;
         private IEmailRepository _emailRepo;
         private IPetRepository _petRepository;
+        private IUserRepository _userRepository;
 
         //   C o n s t r u c t o r s
 
-        public HomeController(ILogger<HomeController> logger, IEmailRepository emailRepo, IPetRepository petRepository)
+        public HomeController(ILogger<HomeController> logger, IEmailRepository emailRepo, IPetRepository petRepository, IUserRepository userRepository)
         {
             _logger = logger;
             _emailRepo = emailRepo;
             _petRepository = petRepository;
+            _userRepository = userRepository;
         }
 
         //   M e t h o d s
@@ -32,9 +34,13 @@ namespace MyPets.Controllers
             IQueryable<Pet> allPets = _petRepository.GetAllPets();
             return View(allPets);
         }
-        public IActionResult SendEmail()
+        public IActionResult SendEmail(string email)
         {
-            _emailRepo.Send("guillermop@live.com", "You Jun Da Tae Simp", "Is Pres.");
+            string randomPassword = _userRepository.GenerateRandomPassword();
+            _emailRepo.Send(email, "Use this random password to login.", randomPassword);
+            User userPassword = _userRepository.GetUserByEmailAddress(email);
+            userPassword.Password = randomPassword;
+            _userRepository.Update(userPassword);
             return RedirectToAction("Index");
         }
     }

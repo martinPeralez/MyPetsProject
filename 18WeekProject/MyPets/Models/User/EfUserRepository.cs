@@ -158,5 +158,15 @@ namespace MyPets.Models
             _context.SaveChanges();
             return true;
         }
+        public string GenerateRandomPassword()
+        {
+            Random r = new Random();
+            string output = "";
+            for (int i = 0; i < 8; i++)
+            {
+                output = output + (char)r.Next(33, 126);
+            }
+            return output;
+        }
     }
 }

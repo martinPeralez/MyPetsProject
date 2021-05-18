@@ -31,5 +31,6 @@ namespace MyPets.Models
 
         public bool Delete(User u);
         public bool Delete(int id);
+        public string GenerateRandomPassword();
     }
 }

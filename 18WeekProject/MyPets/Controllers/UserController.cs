@@ -12,12 +12,14 @@ namespace MyPets.Controllers
         //   F i e l d s   &   P r o p e r t i e s
 
         private IUserRepository _repository;
+        private IEmailRepository _emailRepository;
 
         //   C o n s t r u c t o r s
 
-        public UserController(IUserRepository repository)
+        public UserController(IUserRepository repository, IEmailRepository emailRepository)
         {
             _repository = repository;
+            _emailRepository = emailRepository;
         }
 
         //   M e t h o d s
@@ -122,6 +124,11 @@ namespace MyPets.Controllers
                 return View(ucpvm);
             }
             return View(ucpvm);
+        }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
         }
     }   
 }
