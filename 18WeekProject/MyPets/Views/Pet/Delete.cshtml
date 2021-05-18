@@ -1,5 +1,5 @@
 ﻿@model Pet
-
+@inject IPetRepository petRepository
 @*<img src="@Model.CoverImageUrl" />
     <h1> @Model.Name </h1>
     <h3> @Model.Species</h3>
@@ -14,7 +14,12 @@
     </form>*@
 <div class="container">
     <div>
-        <h2>Are You Sure?</h2>
+        <h2 class="text-center">Are You Sure?</h2>
+    </div>
+    <div class="container-image">
+        <div class="galleries">
+            <a asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.Id"><img class="rounded-img border-color" src="@petRepository.GetPetCoverUrl(Model.Id)" alt="Alternate Text" @*class="img-thumbnail" width="100" height="150"*@ /></a>
+        </div>
     </div>
     <table class="content-table">
         <thead>
@@ -62,9 +67,11 @@
     </table>
     <div>
         <form method="post">
-            <button class="btn btn-class m-2" type="submit" asp-action="Delete" asp-route-id="@Model.Id"> Delete </button>
 
-            <a class="btn btn-class m-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.Id"> Back </a>
+                <button class="btn btn-class mt-2 center-block" type="submit" asp-action="Delete" asp-route-id="@Model.Id"> Delete </button>
         </form>
+        <div>
+            <a asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.Id"><button class="btn btn-class mt-2 center-block"> Back </button></a>
+        </div>
     </div>
 </div>

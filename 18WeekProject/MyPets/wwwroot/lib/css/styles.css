@@ -1,14 +1,71 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
 * {
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 a {
-    text-decoration: none;
     color: #00ac96;
+    text-decoration: none;
 }
 .renderbody {
     height:1000px;
 }
+/*NavBar Section*/
+
+.lis, .links, button{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+}
+.lis, .links{
+    color: #edf0f1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #24252A;
+}
+.logo {
+    cursor: pointer;
+    transition: all 0.3s ease 0;
+}
+.logo:hover {
+    color: #00ac96;
+}
+
+.nav__links {
+    list-style: none;
+}
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+.nav__links li .links {
+    transition: all 0.3s ease 0s;
+}
+.nav__links li a:hover {
+    color: #00ac96;
+}
+button{
+    padding: 9px 25px;
+    background-color; rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+    button:hover {
+        background-color: #00ac96;
+    }
+
+/*NavBar Section End*/
+
 /*Login Section*/
 .content {
     margin: 8px;
@@ -48,6 +105,7 @@ a {
 .btn-class {
     border-color: #00ac96;
     color: #00ac96;
+    margin-right: 2px;
 }
     .btn-class:hover {
         background-color: #00ac96;
@@ -78,7 +136,7 @@ a {
 /*Histroy in Details*/
 .content-table {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 25px auto;
     font-size: 0.9em;
     min-width: 400px;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, .05);
@@ -109,3 +167,47 @@ a {
     color: aliceblue;
 }
 /*Histroy in Details End*/
+/*Homepage*/
+.container-image {
+    max-width: 1200px;
+    margin: auto;
+    /*background: #f2f2f2;*/
+    overflow: auto;
+    
+}
+.gallery {
+    margin: 5px 5px;
+    float: left;
+    width: 390px;
+}
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+.galleries {
+    margin: 5px auto;
+    width: 390px;
+}
+
+.galleries img {
+    width: 100%;
+    height: auto;
+}
+.rounded-img {
+    border-radius: 50%;
+}
+.border-color{
+    border: 2px solid #00ac96;
+}
+
+/*Homepage End*/
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.center-blocks {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -3,12 +3,13 @@
 @inject IPetRepository petRepository
 
 <div class="container">
-    <div>
-        <img src="@Model.CoverImageUrl" alt="Alternate Text" class="img-fluid" width="100" height="200" />
+    <div class="container-image">
+        <div class="galleries">
+            <a asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.Id"><img class="rounded-img border-color" src="@Model.CoverImageUrl" alt="Alternate Text" @*class="img-thumbnail" width="100" height="150"*@ /></a>
+        </div>
     </div>
     <div>
-
-        <table class="content-table">
+        <table class="content-table ">
             <thead>
                 <tr>
                     <th>Species:</th>
@@ -27,7 +28,7 @@
                     {
 
                         <th>Spayed:</th>
-                        
+
 
                     }
                     <th>Vet Form:</th>
@@ -51,14 +52,14 @@
                         <td>@Model.SpayNeuter</td>
                     }
                     <td><a href="@Model.VetFormUrl">Vet Form</a></td>
-                    <td><a asp-controller="Pet" asp-action="Update" asp-route-id="@Model.Id"><button class="btn btn-class m-2"> Update Pet </button></a></td>
-                    <td><a asp-controller="Pet" asp-action="Delete" asp-route-id="@Model.Id"><button class="btn btn-class m-2"> Delete Pet </button></a></td>
+                    <td><a asp-controller="Pet" asp-action="Update" asp-route-id="@Model.Id"><button class="btn btn-class mt-2"> Update Pet </button></a></td>
+                    <td><a asp-controller="Pet" asp-action="Delete" asp-route-id="@Model.Id"><button class="btn btn-class mt-2"> Delete Pet </button></a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    
-    
+
+
 
     <br />
     <div class="row">
@@ -87,30 +88,32 @@
                         @foreach (History history in historyRepository.GetAllHistories().Where(h => h.PetId == Model.Id).OrderBy(d => d.Date))
                         {
 
-                        <tr>
-                            <td>@history.Date</td>
-                            <td>@history.Summary</td>
-                            <td>@history.Weight</td>
-                            <td>@history.Medication</td>
-                            <td>@history.FirstMeal </td>
-                            <td>@history.SecondMeal</td>
-                            @if (history.Appointment)
-                            {
-                                <td class="appointment">@history.Appointment</td>
-                            }
-                            else
-                            {
-                                <td>@history.Appointment</td>
-                            }
-                            <td><a asp-controller="History" asp-action="Update" asp-route-id="@history.Id"><button class="btn btn-class m-2"> Update </button></a></td>
-                            <td><a asp-controller="History" asp-action="Delete" asp-route-id="@history.Id"><button class="btn btn-class m-2"> Delete </button></a></td>
-                        </tr>
+                            <tr>
+                                <td>@history.Date</td>
+                                <td>@history.Summary</td>
+                                <td>@history.Weight</td>
+                                <td>@history.Medication</td>
+                                <td>@history.FirstMeal </td>
+                                <td>@history.SecondMeal</td>
+                                @if (history.Appointment)
+                                {
+                                    <td class="appointment">@history.Appointment</td>
+                                }
+                                else
+                                {
+                                    <td>@history.Appointment</td>
+                                }
+                                <td><a asp-controller="History" asp-action="Update" asp-route-id="@history.Id"><button class="btn btn-class mt-2"> Update </button></a></td>
+                                <td><a asp-controller="History" asp-action="Delete" asp-route-id="@history.Id"><button class="btn btn-class mt-2"> Delete </button></a></td>
+                            </tr>
 
                         }
                     </tbody>
                 </table>
             </div>
-            <a asp-controller="History" asp-action="Create" asp-route-id="@Model.Id"><button class="btn btn-class m-2"> Add History </button></a>
+            <div>
+                <a asp-controller="History" asp-action="Create" asp-route-id="@Model.Id"><button class="btn btn-class center-block"> Add History </button></a>
+            </div>
         }
     </div>
 </div>

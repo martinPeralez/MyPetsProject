@@ -1,8 +1,14 @@
 ﻿@model History
+@inject IPetRepository petRepository
 
 <div class="container">
     <div>
-        <h2>Are You Sure?</h2>
+        <h2 class="text-center">Are You Sure?</h2>
+    </div>
+    <div class="container-image">
+        <div class="galleries">
+            <img class="rounded-img border-color" src="@petRepository.GetPetCoverUrl(Model.PetId)" alt="Alternate Text" />
+        </div>
     </div>
     <table class="content-table">
         <thead>
@@ -29,10 +35,17 @@
         </tbody>
     </table>
     <div>
+        @*<form method="post">
+
+                <button class="btn btn-class mt-2" type="submit" asp-action="Delete" asp-route-id="@Model.Id"> Delete </button>
+                <a class="btn btn-class mt-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"> Back </a>
+            </form>*@
         <form method="post">
             <input type="hidden" asp-for="@Model.PetId" />
-            <button class="btn btn-class m-2" type="submit" asp-action="Delete" asp-route-id="@Model.Id"> Delete </button>
-            <a class="btn btn-class m-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"> Back </a>
+            <button class="btn btn-class mt-2 center-block" type="submit" asp-action="Delete" asp-route-id="@Model.Id"> Delete </button>
         </form>
+        <div>
+            <a asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"><button class="btn btn-class mt-2 center-block"> Back </button></a>
+        </div>
     </div>
 </div>

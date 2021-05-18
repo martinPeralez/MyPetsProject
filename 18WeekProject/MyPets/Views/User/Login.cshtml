@@ -1,5 +1,6 @@
 ﻿@model User
 
+<div asp-validation-summary="All" class="text-danger"></div>
 <div class="container">
     <div class="row content">
         <div class="col-md-3 mb-3">
@@ -16,7 +17,7 @@
                     <label for="password">Password</label>
                     <input asp-for="Password" name="password" type="password" required class="form-control" />
                 </div>
-                <button type="submit" class="btn btn-class m-2"> Login </button>
+                <button type="submit" class="btn btn-class mt-2"> Login </button>
             </form>
         </div>
     </div>

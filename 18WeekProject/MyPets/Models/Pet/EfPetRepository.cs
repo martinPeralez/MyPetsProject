@@ -11,6 +11,7 @@ namespace MyPets.Models
 
         private AppDbContext _context;
         private IUserRepository _userRepository;
+
         //   C o n s t r u c t o r s
 
         public EfPetRepository(AppDbContext context, IUserRepository userRepository)
@@ -44,6 +45,24 @@ namespace MyPets.Models
             //}).FirstOrDefaultAsync();
         }
 
+        public string GetPetCoverUrl(int id)
+        {
+            Pet pet = _context.Pets.Where(p => p.Id == id).FirstOrDefault();
+            char[] charArr = pet.CoverImageUrl.ToCharArray();
+
+            for (int i = 0; i < 1; i++)
+            {
+                if (charArr[0] == '/')
+                {
+                    return pet.CoverImageUrl;
+                }
+                else
+                {
+                    return '/' + pet.CoverImageUrl;
+                }
+            }
+            return '/' + pet.CoverImageUrl;
+        }
         public Pet UpdatePet(Pet pet)
         {
             Pet petToUpdate = _context.Pets.SingleOrDefault(p => p.Id == pet.Id);

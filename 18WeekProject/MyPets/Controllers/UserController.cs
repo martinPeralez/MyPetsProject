@@ -70,8 +70,9 @@ namespace MyPets.Controllers
             bool loggedIn = _repository.Login(u);
             if (loggedIn == true)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Pet");
             }
+            ModelState.AddModelError("", "Could not log this user in. Try again.");
             return View(u);
         }
         public IActionResult Logout()

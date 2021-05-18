@@ -14,7 +14,7 @@ namespace MyPets.Models
         //   R e a d
         public IQueryable<Pet> GetAllPets();
         public Pet GetPetById(int petId);
-
+        public string GetPetCoverUrl(int id);
         //   U p d a t e
         public Pet UpdatePet(Pet pet);
 

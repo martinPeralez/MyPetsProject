@@ -1,35 +1,34 @@
 ﻿@model History
 @inject IPetRepository petRepository
-
 @*<h1> Hello World </h1>
-<form method="post">
-    <input type="hidden" asp-for="PetId" />
-    <input type="hidden" asp-for="Id"/>
-    <table>
-        <tr>
-            <th>Date:</th>
-            <td><input asp-for="Date" /></td>
-        </tr>
-        <tr>
-            <th>Summary:</th>
-            <td><input asp-for="Summary" /></td>
-        </tr>
-        <tr>
-            <th>Weight:</th>
-            <td><input asp-for="Weight" /></td>
-        </tr>
-        <tr>
-            <th></th>
-            <td>
-                <input type="submit" value="Add History"/>
-            </td>
-        </tr>
-    </table>
-</form>*@
+    <form method="post">
+        <input type="hidden" asp-for="PetId" />
+        <input type="hidden" asp-for="Id"/>
+        <table>
+            <tr>
+                <th>Date:</th>
+                <td><input asp-for="Date" /></td>
+            </tr>
+            <tr>
+                <th>Summary:</th>
+                <td><input asp-for="Summary" /></td>
+            </tr>
+            <tr>
+                <th>Weight:</th>
+                <td><input asp-for="Weight" /></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" value="Add History"/>
+                </td>
+            </tr>
+        </table>
+    </form>*@
 <div class="container">
     <div class="row content">
         <div class="col-md-3 mb-3">
-            <img src="/images/LoginPicture/images.jpg" alt="Cute Cat and Dog" />
+            <img src="@petRepository.GetPetCoverUrl(Model.PetId)" class="img-fluid" />
         </div>
         <div class="col-md-6">
             <h3 class="signin-text mb-3"> History </h3>
@@ -68,8 +67,8 @@
                         <option value="False">False</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-class m-2"> Add History </button>
-                <a class="btn btn-class m-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"> Back </a>
+                <button type="submit" class="btn btn-class mt-2"> Add History </button>
+                <a class="btn btn-class mt-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"> Back </a>
             </form>
         </div>
     </div>

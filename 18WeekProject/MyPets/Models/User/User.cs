@@ -18,7 +18,6 @@ namespace MyPets.Models
 
         [Required(ErrorMessage = "Password Is Required")]
         public string Password { get; set; }
-
         public bool? IsAdmin { get; set; }
         public long PhoneNumber { get; set; }
         public string Address { get; set; }

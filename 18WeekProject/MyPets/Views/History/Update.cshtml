@@ -1,9 +1,10 @@
 ﻿@model History
+@inject IPetRepository petRepository
 
 <div class="container">
     <div class="row content">
         <div class="col-md-3 mb-3">
-            <img src="/images/LoginPicture/images.jpg" alt="Cute Cat and Dog" />
+            <img src="@petRepository.GetPetCoverUrl(Model.PetId)" class="img-fluid" />
         </div>
         <div class="col-md-6">
             <h3 class="signin-text mb-3"> History </h3>
@@ -42,8 +43,8 @@
                         <option value="False">False</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-class m-2" asp-route-id="@Model.Id"> Update </button>
-                <a class="btn btn-class m-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"> Back </a>
+                <button type="submit" class="btn btn-class mt-2" asp-route-id="@Model.Id"> Update </button>
+                <a class="btn btn-class mt-2" asp-controller="Pet" asp-action="Detail" asp-route-id="@Model.PetId"> Back </a>
             </form>
         </div>
     </div>

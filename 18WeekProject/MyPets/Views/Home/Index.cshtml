@@ -1,15 +1,20 @@
 ﻿@model IQueryable<Pet>
-<h1 class="text-center text-primary"> My Pets </h1>
-<div class="container">
-    @if (Model != null)
-    {
-        @foreach (var image in Model)
-        {
-            <div class="image">
-                <img src="@image.CoverImageUrl" class="d-block w-100" alt="Gallery Of Your Pets" />
-            </div>
-        }
-    }
+
+<div class="container-image">
+    <div class="gallery">
+        <img src="/images/HomePage/Cat Beans.jpg" class="img-fluid" alt="" />
+        <div class="desc">  </div>
+    </div>
+    <div class="gallery">
+        <img src="/images/HomePage/Dog beans.jpg" class="img-fluid" alt="" />
+        <div class="desc">  </div>
+    </div>
+    <div class="gallery">
+        <img src="/images/HomePage/download.jpg" class="img-fluid" alt="" />
+        <div class="desc">  </div>
+    </div>
+    <div class="gallery">
+        <img src="/images/HomePage/images.jpg" class="img-fluid" alt="" />
+        <div class="desc">  </div>
+    </div>
 </div>
-
-
